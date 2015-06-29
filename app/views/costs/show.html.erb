@@ -1,0 +1,22 @@
+<p>
+	<strong>Cost:</strong>
+	<%= @cost.amount %>
+</p>
+
+<p>
+	<strong>Date:</strong>
+	<%= @cost.date %>
+</p>
+
+<p>
+	<strong>Paid To:</strong>
+	<%= @cost.paid_to %>
+</p>
+
+<p>
+	<strong>Paid For:</strong>
+	<%= @cost.paid_for %>
+</p>
+
+<%= link_to 'Edit', edit_user_cost_path(@user, @cost) %> |
+<%= link_to 'Back', user_costs_path(@user) %>

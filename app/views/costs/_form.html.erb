@@ -1,0 +1,40 @@
+<%= form_for @cost, url: user_costs_path do |f| %>
+
+	<% if @cost.errors.any? %>
+		<div>
+			<h2>
+				<%= pluralize(@cost.errors.count, "error") %> prohibited this cost from being added:
+			</h2>
+			<ul>
+				<% @cost.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<p>
+		<%= f.label "Amount (R)" %><br>
+		<%= f.text_field :amount %>
+	</p>
+
+	<p>
+		<%= f.label :date %><br>
+		<%= f.text_field :date %><br>
+	</p>
+
+	<p>
+		<%= f.label "Where did you spend?" %><br>
+		<%= f.text_field :paid_to %><br>
+	</p>
+
+	<p>
+		<%= f.label "What did you spend on?" %><br>
+		<%= f.text_field :paid_for %><br>
+	</p>
+
+	<p>
+		<%= f.submit %>
+	</p>
+
+<% end %>

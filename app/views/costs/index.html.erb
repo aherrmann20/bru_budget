@@ -1,0 +1,13 @@
+<h1>Costs:</h1>
+
+<ul>
+	<% @costs.each do |cost| %>
+		<li>
+			<strong><%= link_to cost.paid_for, user_cost_path(@user, cost) %></strong> |
+			<%= link_to "Edit", edit_user_cost_path(@user, cost) %> |
+			<%= link_to "Delete", user_cost_path(@user, cost), method: :delete, data: { confirm: "Are you sure you want to delete this cost?" } %>
+		</li>
+	<% end %>
+</ul>
+
+<%= link_to "New Cost", new_user_cost_path(@user) %>
