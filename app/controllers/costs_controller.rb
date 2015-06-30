@@ -18,7 +18,7 @@ before_action :find_user
 	end
 
 	def create
-		@cost = Cost.new(cost_params)
+		@cost = @user.costs.build(cost_params)
 		@cost.user = current_user
 
 		if @cost.save
@@ -33,9 +33,9 @@ before_action :find_user
 	end
 
 	def update
-		@cost = Cost.find params[:id]
+		@cost = @user.costs.find params[:id]
 
-		if @cost.update
+		if @cost.update(cost_params)
 			redirect_to [@user, @cost]
 		else
 			render 'edit'
@@ -43,10 +43,10 @@ before_action :find_user
 	end
 
 	def destroy
-		@cost = Cost.find params[:id]
+		@cost = @user.costs.find params[:id]
 		@cost.destroy
 
-		redirect_to costs_path
+		redirect_to user_costs_path(@user)
 	end
 
 private
